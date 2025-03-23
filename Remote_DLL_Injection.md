@@ -125,8 +125,8 @@ GetProcAddress.restypes = wintypes.LPVOID
 
 class _SECURITY_ATTRIBUTES(Structure):
 	_fields_ = [('nlengths', wintypes.DWORD),
-							('lpSecurityDescriptor', wintypes.LPVOID),
-							('bInheritHandle', wintypes.BOOL),]
+			('lpSecurityDescriptor', wintypes.LPVOID),
+			('bInheritHandle', wintypes.BOOL),]
 
 SECURITY_ATTRIBUTES = _SECURITY_ATTRIBUTES
 LPSECURITY_ATTRIBUTES = POINTER(_SECUIRTY_ATTRIBUTES)
