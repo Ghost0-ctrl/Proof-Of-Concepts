@@ -25,13 +25,13 @@ This POC demonstrates how to create a new process (in this case, launching an in
 
 ## Detailed Code Walkthrough
 1. Importing and Setting Up Windows API Functions
-Libraries and ctypes:
+   1.Libraries and ctypes:
 The script imports modules from Python’s ctypes and wintypes to interact with low-level Windows APIs. This allows the POC to call functions like VirtualAllocEx, WriteProcessMemory, and others directly.
 
-Defining Function Prototypes:
+  2. Defining Function Prototypes:
 Each API function (e.g., VirtualAllocEx, WriteProcessMemory, VirtualProtectEx) is given the correct argument types (argtypes) and return types (restype). This is essential for ensuring that the calls are made correctly to the underlying Windows DLLs.
 
-Structures:
+  3. Structures:
 Custom structures such as _SECURITY_ATTRIBUTES, STARTUPINFO, and PROCESS_INFORMATION are defined. These mirror the corresponding Windows structures needed for functions like CreateProcessA. They hold process handles, thread handles, process IDs, and configuration details required during process creation.
 
 2. Process Creation
