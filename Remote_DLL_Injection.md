@@ -40,7 +40,6 @@ This technique is commonly used for injecting code into a process for either leg
    The OpenProcess function is called with the PROCESS_ALL_ACCESS flag, which grants the maximum level of access required for
    injection.
    If OpenProcess fails (returns a NULL handle), an error is raised. Successful retrieval of a valid handle is critical for subsequent operations.
-## Code
    ```bash
 handle = OpenProcess(PROCESS_ALL_ACCESS, False, pid)
 if not handle:
