@@ -45,8 +45,8 @@ WriteProcessMemory.restype = wintypes.BOOL
 
 class _SECURITY_ATTRIBUTES(Structure):
 	_fields_ = [('nlengths', wintypes.DWORD),
-							('lpSecurityDescriptor', wintypes.LPVOID),
-							('bInheritHandle', wintypes.BOOL),]
+			('lpSecurityDescriptor', wintypes.LPVOID),
+			('bInheritHandle', wintypes.BOOL),]
 							
 SECURITY_ATTRIBUTES = _SECURITY_ATTRIBUTES
 LPSECURITY_ATTRIBUTES = POINTER(_SECURITY_ATTRIBUTES)
@@ -71,29 +71,29 @@ VirtualProtectEx.restype = wintypes.BOOL
 
 class STARTUPINFO(Structure):
 	_fields_ = [("cb", wintypes.DWORD),
-							("lpReserved", LPTSTR),
-							("lpDesktop", LPTSTR),
-							("lpTitle", LPTSTR),
-							("dwX", wintypes.DWORD),
-							("dwY", wintypes.DWORD),
-							("dwXSize", wintypes.DWORD),
-							("dwYSize", wintypes.DWORD),
-							("dwXCountChars", wintypes.DWORD),
-							("dwYCountChars", wintypes.DWORD),
-							("dwFillAttribute", wintypes.DWORD),
-							("dwFlags", wintypes.DWORD),
-							("wShowWindow", wintypes.WORD),
-							("cbReserved2", wintypes.WORD),
-							("lpReserved2", LPBYTE),
-							("hStdInput", wintypes.HANDLE),
-							("hStdOutput", wintypes.HANDLE),
-							("hStdError", wintypes.HANDLE),]
+			("lpReserved", LPTSTR),
+			("lpDesktop", LPTSTR),
+			("lpTitle", LPTSTR),
+			("dwX", wintypes.DWORD),
+			("dwY", wintypes.DWORD),
+			("dwXSize", wintypes.DWORD),
+			("dwYSize", wintypes.DWORD),
+			("dwXCountChars", wintypes.DWORD),
+			("dwYCountChars", wintypes.DWORD),
+			("dwFillAttribute", wintypes.DWORD),
+			("dwFlags", wintypes.DWORD),
+			("wShowWindow", wintypes.WORD),
+			("cbReserved2", wintypes.WORD),
+			("lpReserved2", LPBYTE),
+			("hStdInput", wintypes.HANDLE),
+			("hStdOutput", wintypes.HANDLE),
+			("hStdError", wintypes.HANDLE),]
 
 class PROCESS_INFORMATION(Structure):
 	_fields_ = [("hProcess", wintypes.HANDLE),
-							("hThread", wintypes.HANDLE),
-							("dwProcessId", wintypes.DWORD),
-							("dwThreadId", wintypes.DWORD),]
+			("hThread", wintypes.HANDLE),
+			("dwProcessId", wintypes.DWORD),
+			("dwThreadId", wintypes.DWORD),]
 
 CreateProcessA = kernel32.CreateProcessA
 CreateProcessA.argtypes = (wintypes.LPCSTR, wintypes.LPSTR, LPSECURITY_ATTRIBUTES, LPSECURITY_ATTRIBUTES, wintypes.BOOL, wintypes.DWORD, wintypes.LPVOID, wintypes.LPCSTR, POINTER(STARTUPINFO), POINTER(PROCESS_INFORMATION)) 
